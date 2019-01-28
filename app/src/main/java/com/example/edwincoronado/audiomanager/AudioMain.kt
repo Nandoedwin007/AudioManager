@@ -30,8 +30,44 @@ class AudioMain : AppCompatActivity() {
         btnring.setOnClickListener(object: View.OnClickListener {
             override fun onClick(view: View): Unit {
                 // Handler code here.
-                myAudioManager.ringerMode
+                myAudioManager.ringerMode = AudioManager.RINGER_MODE_NORMAL
                 Toast.makeText(getBaseContext(), "Se ha colocado en modo sonido", Toast.LENGTH_LONG).show()
+
+            }
+        })
+
+        btnsilencio.setOnClickListener(object: View.OnClickListener {
+            override fun onClick(view: View): Unit {
+                // Handler code here.
+                myAudioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
+                Toast.makeText(getBaseContext(), "Se ha colocado en modo silencio", Toast.LENGTH_LONG).show()
+
+            }
+        })
+
+        btnvibrar.setOnClickListener(object: View.OnClickListener {
+            override fun onClick(view: View): Unit {
+                // Handler code here.
+                myAudioManager.ringerMode = AudioManager.RINGER_MODE_VIBRATE
+                Toast.makeText(getBaseContext(), "Se ha colocado en modo vibración", Toast.LENGTH_LONG).show()
+
+            }
+        })
+
+        btnmodo.setOnClickListener(object: View.OnClickListener {
+            override fun onClick(view: View): Unit {
+                // Handler code here.
+                val modo = myAudioManager.ringerMode
+                if (modo==AudioManager.RINGER_MODE_VIBRATE){
+                    Toast.makeText(getBaseContext(), "El dispositivo se encuentra en modo VIBRADOR", Toast.LENGTH_LONG).show()
+                }
+                else if (modo==AudioManager.RINGER_MODE_NORMAL){
+                    Toast.makeText(getBaseContext(), "El dispositivo se encuentra en modo SONIDO", Toast.LENGTH_LONG).show()
+                }
+                else if (modo==AudioManager.RINGER_MODE_SILENT){
+                    Toast.makeText(getBaseContext(), "El dispositivo se encuentra en modo SILENCIO", Toast.LENGTH_LONG).show()
+                }
+
 
             }
         })
